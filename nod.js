@@ -1,20 +1,38 @@
-// The correct answer for the image identification
-const correctAnswer = "YourImageName"; // Replace this with the correct identification answer
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
 
-// Function to check the user's guess
-function checkGuess() {
-    // Get the value the user entered
-    const userGuess = document.getElementById("user-guess").value.trim();
-    
-    // Get the element where we display the result
-    const result = document.getElementById("result");
+.container {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-    // Check if the user's guess matches the correct answer (case-insensitive)
-    if (userGuess.toLowerCase() === correctAnswer.toLowerCase()) {
-        result.textContent = "Correct! Well done!";
-        result.style.color = "green"; // Display in green if the guess is correct
-    } else {
-        result.textContent = "Incorrect, try again.";
-        result.style.color = "red"; // Display in red if the guess is incorrect
-    }
+input[type="file"] {
+  margin: 10px 0;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+img {
+  max-width: 100%;
+  max-height: 400px;
+  margin-top: 20px;
 }

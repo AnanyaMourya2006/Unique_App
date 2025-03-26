@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Identification</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image Identification Challenge</h1>
+        <div class="image-container">
+            <img src="your-image.jpg" alt="Image for Identification" id="image-to-identify">
+        </div>
+        <div class="input-container">
+            <label for="user-guess">What is this image?</label>
+            <input type="text" id="user-guess" placeholder="Enter your guess here">
+            <button onclick="checkGuess()">Submit</button>
+        </div>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const correctAnswer = "YourImageName"; // Replace this with the actual name of the image.
+        
+        function checkGuess() {
+            const userGuess = document.getElementById("user-guess").value.trim();
+            const result = document.getElementById("result");
+
+            if (userGuess.toLowerCase() === correctAnswer.toLowerCase()) {
+                result.textContent = "Correct! Well done!";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Incorrect, try again.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,32 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Image Classification with TFLite Model</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-tflite"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Classification Model</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Image Classification with TensorFlow Lite Model</h1>
-        
-        <!-- Image upload form -->
-        <input type="file" id="imageInput" accept="image/*">
-        
-        <!-- Canvas for image display -->
-        <canvas id="canvas" style="display:none;"></canvas>
-        
-        <!-- Prediction result -->
-        <div id="predictionResult" class="result"></div>
-
-        <button onclick="predictImage()">Classify Image</button>
-    </div>
-
-    <script src="script.js"></script>
+  <div class="container">
+    <h1>Image Classification Model</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="classifyImage()">Classify Image</button>
+    <div id="output"></div>
+    <img id="selectedImage" src="" alt="Selected Image" />
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="script.js"></script>
 </body>
 </html>
 
-  

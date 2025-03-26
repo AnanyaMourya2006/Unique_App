@@ -1,38 +1,36 @@
-body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+let model;
+
+async function loadModel() {
+  // Load a pre-trained TensorFlow.js model
+  model = await tf.loadLayersModel('https://your-model-url/model.json');
+  console.log("Model Loaded");
 }
 
-.container {
-  text-align: center;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+async function classifyImage() {
+  const image = document.getElementById('selectedImage');
+  if (!image.src) {
+    alert("Please upload an image first!");
+    return;
+  }
+
+  const tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([224, 224]).expandDims(0).toFloat().div(tf.scalar(255));
+  const predictions = await model.predict(tensor).data();
+  
+  const outputElement = document.getElementById('output');
+  outputElement.innerHTML = `Predicted Class: ${predictions[0]}`;
 }
 
-input[type="file"] {
-  margin: 10px 0;
-}
+document.getElementById('imageInput').addEventListener('change', function (e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      const imgElement = document.getElementById('selectedImage');
+      imgElement.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-img {
-  max-width: 100%;
-  max-height: 400px;
-  margin-top: 20px;
-}
+// Load the model when the page loads
+window.onload = loadModel;
